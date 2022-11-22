@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Reservation')
+@section('title','Pengajuan Replacement Class')
 @section('content')
     <div class="container">
         <div class="row">
@@ -7,13 +7,13 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Reservation</div>
+                    <div class="card-header">Pengajuanreplacementclass</div>
                     <div class="card-body">
-                        <a href="{{ url('/admin/reservation/create') }}" class="btn btn-success btn-sm" title="Add New reservation">
+                        <a href="{{ url('/admin/pengajuan-replacement-class/create') }}" class="btn btn-success btn-sm" title="Add New pengajuanReplacementClass">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        <form method="GET" action="{{ url('/admin/reservation') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                        <form method="GET" action="{{ url('/admin/pengajuan-replacement-class') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                                 <span class="input-group-append">
@@ -30,29 +30,29 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>User Id</th><th>Reservation Code</th><th>Room Id</th><th>Actions</th>
+                                        <th>#</th><th>Nama Lengkap</th><th>Nama Mata Kuliah</th><th>Kelas</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($reservation as $item)
+                                @foreach($pengajuanreplacementclass as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->user_id }}</td><td>{{ $item->reservation_code }}</td><td>{{ $item->room_id }}</td>
+                                        <td>{{ $item->nama_lengkap }}</td><td>{{ $item->nama_mata_kuliah }}</td><td>{{ $item->kelas }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/reservation/' . $item->id) }}" title="View reservation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/reservation/' . $item->id . '/edit') }}" title="Edit reservation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/pengajuan-replacement-class/' . $item->id) }}" title="View pengajuanReplacementClass"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/pengajuan-replacement-class/' . $item->id . '/edit') }}" title="Edit pengajuanReplacementClass"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/admin/reservation' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form method="POST" action="{{ url('/admin/pengajuan-replacement-class' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete reservation" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete pengajuanReplacementClass" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $reservation->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $pengajuanreplacementclass->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>
